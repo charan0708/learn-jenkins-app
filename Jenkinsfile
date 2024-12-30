@@ -18,6 +18,18 @@ pipeline {
                     ls -la
                 '''    
             }
+        stage ('Test') {
+            agent {
+                docker {
+                    image 'node:18-alpine'
+                }
+            }
+            steps {
+                sh '''
+                    find ./build -name index.html
+                    npm test
+            }
+        }    
         }
     }
 }
