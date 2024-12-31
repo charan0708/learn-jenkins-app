@@ -18,6 +18,7 @@ pipeline {
                     ls -la
                 '''    
             }
+        }    
         stage ('Test') {
             agent {
                 docker {
@@ -28,8 +29,8 @@ pipeline {
                 sh '''
                     find ./build -name index.html
                     npm test
+                '''    
             }
         }    
-        }
     }
 }
